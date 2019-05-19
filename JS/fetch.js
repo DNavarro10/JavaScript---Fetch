@@ -1,11 +1,22 @@
 'use strict'
 
 // fetch y peticiones/ Apis rest
-let usuario = [];
+let div_user = document.querySelector("#usuarios");
+let usuarios = [];
 
-fetch('https://jsonplaceholder.typicode.com/users')
+fetch('https://reqres.in/api/users')
 .then(data => data.json())
-.then( user =>{
-    usuario =  user[0].name;
-    console.log(usuario)
+.then(user =>{
+    usuarios =  user.data;
+    console.log(usuarios);
+
+    usuarios.map ((user, i) => {
+        let nombre = document.createElement('h4');
+
+
+        nombre.innerHTML = i + user.first_name + " " + user.last_name;
+        console.log(div_user);
+        div_user.append(nombre);
+        console.log(div_user);
+    });
 });
